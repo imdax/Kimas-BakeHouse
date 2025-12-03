@@ -29,18 +29,18 @@ const Hero = () => {
             <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-peach/20 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl -z-10" />
             <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-green/5 rounded-full translate-y-1/3 -translate-x-1/4 blur-3xl -z-10" />
 
-            {/* Floating Elements */}
+            {/* Floating Elements - Desktop Only */}
             <motion.div
                 animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
                 transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-                className="absolute top-20 left-10 text-4xl opacity-20 hidden md:block"
+                className="absolute top-20 left-10 text-4xl opacity-20 hidden md:block will-change-transform"
             >
                 🥖
             </motion.div>
             <motion.div
                 animate={{ y: [0, 30, 0], rotate: [0, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 6, ease: "easeInOut", delay: 1 }}
-                className="absolute bottom-40 right-10 text-4xl opacity-20 hidden md:block"
+                className="absolute bottom-40 right-10 text-4xl opacity-20 hidden md:block will-change-transform"
             >
                 🧁
             </motion.div>
@@ -103,7 +103,7 @@ const Hero = () => {
                         <motion.div
                             animate={{ y: [0, -10, 0] }}
                             transition={{ repeat: Infinity, duration: 4 }}
-                            className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-brand-peach/20 max-w-[200px]"
+                            className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl flex items-center gap-4 border border-brand-peach/20 max-w-[200px] will-change-transform"
                         >
                             <div className="bg-brand-orange/10 p-3 rounded-full">
                                 <ChevronRight className="text-brand-orange w-6 h-6" />

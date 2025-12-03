@@ -73,10 +73,10 @@ const Curriculum = () => {
                     {categories.map((category, idx) => (
                         <motion.div
                             key={idx}
-                            initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
-                            whileInView={{ opacity: 1, x: 0 }}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.6, delay: idx * 0.1 }}
+                            transition={{ duration: 0.5, delay: idx * 0.1 }}
                             whileHover={{ y: -5 }}
                             className="bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-brand-peach/20 hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
                         >
