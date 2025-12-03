@@ -4,6 +4,15 @@ import Card from './ui/Card';
 import { Calendar, DollarSign, ShoppingBag, CheckCircle } from 'lucide-react';
 
 const CourseInfo = () => {
+    const [isMobile, setIsMobile] = React.useState(false);
+
+    React.useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
+
     const features = [
         { icon: <Calendar className="w-6 h-6 text-brand-orange" />, title: "Duration", value: "1 Month" },
         { icon: <CheckCircle className="w-6 h-6 text-brand-orange" />, title: "Type", value: "Veg & Non-Veg" },
@@ -14,9 +23,9 @@ const CourseInfo = () => {
     const cardVariants = {
         hidden: {
             opacity: 0,
-            y: 100,
-            rotateX: -90,
-            scale: 0.8
+            y: 50,
+            rotateX: isMobile ? 0 : -90,
+            scale: 0.9
         },
         visible: (i) => ({
             opacity: 1,
@@ -24,20 +33,20 @@ const CourseInfo = () => {
             rotateX: 0,
             scale: 1,
             transition: {
-                delay: i * 0.15,
-                duration: 0.6,
+                delay: i * 0.1,
+                duration: 0.5,
                 type: "spring",
-                bounce: 0.4
+                bounce: 0.3
             }
         })
     };
 
     return (
-        <section id="course" className="py-20 bg-white relative overflow-hidden perspective-1000">
-            {/* Decorative Background */}
+        <section id="course" className={`py-20 bg-white relative overflow-hidden ${isMobile ? '' : 'perspective-1000'}`}>
+            {/* Decorative Background - Optimized for Mobile */}
             <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
-                <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-brand-orange blur-3xl"></div>
-                <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-brand-green blur-3xl"></div>
+                <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-brand-orange blur-2xl md:blur-3xl"></div>
+                <div className="absolute bottom-10 right-10 w-40 h-40 rounded-full bg-brand-green blur-2xl md:blur-3xl"></div>
             </div>
 
             <div className="container mx-auto px-4 relative z-10">
@@ -61,7 +70,7 @@ const CourseInfo = () => {
                     </motion.p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 perspective-1000">
+                <div className={`grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12 ${isMobile ? '' : 'perspective-1000'}`}>
                     {features.map((feature, index) => (
                         <motion.div
                             key={index}
@@ -69,10 +78,10 @@ const CourseInfo = () => {
                             variants={cardVariants}
                             initial="hidden"
                             whileInView="visible"
-                            viewport={{ once: true, margin: "-50px" }}
+                            viewport={{ once: true, margin: "-10%" }}
                             className="h-full"
                         >
-                            <Card className="flex flex-col items-center text-center hover:border-brand-orange/50 transition-colors h-full justify-center group transform-style-3d">
+                            <Card className={`flex flex-col items-center text-center hover:border-brand-orange/50 transition-colors h-full justify-center group ${isMobile ? '' : 'transform-style-3d'}`}>
                                 <div className="bg-brand-cream p-4 rounded-full mb-4 group-hover:scale-110 transition-transform duration-300 shadow-sm">
                                     {feature.icon}
                                 </div>
@@ -96,8 +105,8 @@ const CourseInfo = () => {
                     </div>
                     <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
 
-                    {/* Animated shine effect */}
-                    <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform skew-x-12 animate-shine"></div>
+                    {/* Animated shine effect - Optimized */}
+                    <div className="absolute top-0 -left-[100%] w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent transform skew-x-12 animate-shine will-change-transform"></div>
                 </motion.div>
             </div>
         </section>

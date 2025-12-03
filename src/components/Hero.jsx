@@ -26,8 +26,9 @@ const Hero = () => {
     return (
         <section id="home" ref={ref} className="relative pt-32 pb-20 px-4 min-h-screen flex items-center overflow-hidden bg-brand-cream">
             {/* Decorative Blobs */}
-            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-peach/20 rounded-full -translate-y-1/2 translate-x-1/3 blur-3xl -z-10" />
-            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-green/5 rounded-full translate-y-1/3 -translate-x-1/4 blur-3xl -z-10" />
+            {/* Decorative Blobs - Optimized */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-brand-peach/20 rounded-full -translate-y-1/2 translate-x-1/3 blur-2xl md:blur-3xl -z-10" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-green/5 rounded-full translate-y-1/3 -translate-x-1/4 blur-2xl md:blur-3xl -z-10" />
 
             {/* Floating Elements - Desktop Only */}
             <motion.div
